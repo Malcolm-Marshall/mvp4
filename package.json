@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "react-dev": "webpack -d --watch",
-    "start": "live-server ./dist"
+    "start": "live-server ./dist",
+    "server": "nodemon server"
   },
   "keywords": [],
   "author": "",
@@ -21,9 +22,16 @@
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.6",
+    "bootstrap": "^4.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "^17.0.0",
+    "react-bootstrap": "^1.5.2",
+    "react-bootstrap-modal": "^4.2.0",
+    "react-dom": "^17.0.0"
   }
 }

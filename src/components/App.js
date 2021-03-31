@@ -1,12 +1,24 @@
 import React from 'react';
+import { Row, Col, Container, Button } from 'react-bootstrap';
+import AddPlant from './AddPlant';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends React.Component {
-  render(){
-    return(
-    <div>
-      Starter App component - hello there
-    </div>
-  )}
+
+function App() {
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <h1>Happy Plants!</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <AddPlant />
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
 export default App;
