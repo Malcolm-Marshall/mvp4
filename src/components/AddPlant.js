@@ -8,15 +8,19 @@ function AddPlant() {
 
   const [modalShow, setModalShow] = useState(false);
 
+  const style = {
+    className: 'justify-content-md-right',
+  }
+
   return (
     <>
     <div>
 
     <Container>
       <Row>
-        <Col>
+        <Col style={style}>
           <Button variant="primary" onClick={() => setModalShow(true)}>
-            Add Plant
+            Add
       </Button>
           <AddModal
             show={modalShow}
