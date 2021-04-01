@@ -4,13 +4,9 @@ import AddModal from './AddModal';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function AddPlant() {
+function AddPlant({ getAll }) {
 
   const [modalShow, setModalShow] = useState(false);
-
-  const style = {
-    className: 'justify-content-md-right',
-  }
 
   return (
     <>
@@ -18,13 +14,14 @@ function AddPlant() {
 
     <Container>
       <Row>
-        <Col style={style}>
-          <Button variant="primary" className="float-right" onClick={() => setModalShow(true)}>
+        <Col>
+          <Button variant="btn btn-outline-success" className="float-right" onClick={() => setModalShow(true)}>
             Add
       </Button>
           <AddModal
             show={modalShow}
             onHide={() => setModalShow(false)}
+            getAll={getAll}
           />
         </Col>
       </Row>

@@ -15,15 +15,26 @@ connection.connect((err) => {
   }
 });
 
-var getAll = (cb) => {
+const getAll = (cb) => {
   connection.query('SELECT * FROM plants', (err, result) => {
     if (err) {
       cb(err, null)
     }
     cb(null, result);
   })
+};
+
+const addPlant = (data, cb) => {
+  console.log(data)
+  connection.query('INSERT INTO plants (name, water, sun, photo) VALUES (?, ?, ?, ?)', [data.name, data.water, data.sun, data.photo], (err, result) => {
+    if (err) {
+      cb(err)
+    }
+    cb(null, result);
+  })
 }
 
 module.exports = {
-  getAll
+  getAll,
+  addPlant
 };

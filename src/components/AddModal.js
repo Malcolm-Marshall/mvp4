@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, Col, Row, Container, Form } from 'react-bootstrap';
+const axios = require('axios');
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function AddModal(props) {
 
   const [imgContainer, setImgContainer] = useState('');
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState('');
   const [photosToggle, setPhotosToggle] = useState(false);
+  const [name, setName] = useState('');
+  const [water, setWater] = useState('');
+  const [sun, setSun] = useState('');
 
 
   const addPhoto = (e) => {
@@ -21,6 +25,33 @@ function AddModal(props) {
     } else {
       alert('Please upload a valid image url');
     }
+  };
+
+  const addPlant = () => {
+    const obj = {
+      name,
+      water,
+      sun,
+      photo: photos
+    }
+    axios.post('http://localhost:3000/plants', obj)
+    .then(() => props.getAll())
+    .catch((err) => console.log(err))
+  }
+
+  // useEffect(() => {
+  //   addPlant();
+  // }, []);
+
+  const handleWater = (e) => {
+    setWater(e.target.value)
+  };
+
+  const handleSun = (e) => {
+    setSun(e.target.value)
+  };
+  const handleName = (e) => {
+    setName(e.target.value)
   };
 
   return (
@@ -47,27 +78,28 @@ function AddModal(props) {
                     placeholder="Example: Spider Plant"
                     name="name"
                     size="sm"
+                    onChange={(e) => handleName(e)}
                   >
                   </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Control as="select" size="sm">
-                    <option>Water Needs</option>
-                    <option>Once a Day</option>
-                    <option>Every Other Day</option>
-                    <option>Twice a Week</option>
-                    <option>Once a Week</option>
-                    <option>Bi Weekly</option>
-                    <option>Once a Month</option>
+                  <Form.Control as="select" size="sm" onChange={(e) => handleWater(e)}>
+                    <option value="water">Water Needs</option>
+                    <option value="Once a Day">Once a Day</option>
+                    <option value="Every Other Day">Every Other Day</option>
+                    <option value="Twice a Week">Twice a Week</option>
+                    <option value="Once a Week">Once a Week</option>
+                    <option value="Bi Weekly">Bi Weekly</option>
+                    <option value="Once a Month">Once a Month</option>
                   </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Control as="select" size="sm">
-                    <option>Sunlight Needs</option>
-                    <option>Full Sun ~ At least 6 hours direct sunlight</option>
-                    <option>Part Sun ~ Between 3 and 6 hours direct sunlight</option>
-                    <option>Part Shade ~ Between 3 and 6 hours direct, shade mid day</option>
-                    <option>Full Shade ~ Less than 3 hours per day</option>
+                  <Form.Control as="select" size="sm" onChange={(e) => handleSun(e)}>
+                    <option value="Sun">Sunlight Needs</option>
+                    <option value="Full Sun">Full Sun ~ At least 6 hours direct sunlight</option>
+                    <option value="Part Sun">Part Sun ~ Between 3 and 6 hours direct sunlight</option>
+                    <option value="Part Shade">Part Shade ~ Between 3 and 6 hours direct, shade mid day</option>
+                    <option value="Full Shade">Full Shade ~ Less than 3 hours per day</option>
                   </Form.Control>
                 </Form.Group>
                 <Form.Group>
@@ -90,7 +122,7 @@ function AddModal(props) {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button>Add</Button>
+          <Button onClick={() => addPlant()}>Add</Button>
           {/* <Button onClick={props.onHide}>Close</Button> */}
         </Modal.Footer>
       </Modal>

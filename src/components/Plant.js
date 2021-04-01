@@ -25,11 +25,11 @@ function Plant({ plant }) {
           </Col>
         </Row>
         <Row>
-          Water: &nbsp;
+          <strong>Water: &nbsp;</strong>
           <p>{plant.water}</p>
         </Row>
         <Row>
-          Sun: &nbsp;
+          <strong>Sun: &nbsp;</strong>
           <p>{plant.sun}</p>
         </Row>
       </Col>

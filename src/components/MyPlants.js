@@ -9,8 +9,7 @@ function MyPlants({ plants }) {
     <Container>
       <Row>
         <Col>
-          <hr></hr>
-          <h3>My Plants</h3>
+          <h3><strong><u>In My House</u></strong></h3>
         </Col>
       </Row>
       <br />

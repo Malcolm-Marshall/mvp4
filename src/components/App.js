@@ -24,12 +24,13 @@ function App() {
     <Container>
       <Row>
         <Col>
-          <h1>Happy Plants!</h1>
+          <h1>Most Valuable Plants</h1>
         </Col>
       </Row>
+      <hr></hr>
       <Row>
         <Col>
-          <AddPlant />
+          <AddPlant getAll={getAll}/>
         </Col>
       </Row>
       <Row>
