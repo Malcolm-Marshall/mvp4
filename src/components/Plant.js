@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 
 
 function Plant({ plant }) {
@@ -8,14 +8,28 @@ function Plant({ plant }) {
     <Container>
       <Col>
         <Row>
-        <h4>{plant.name}</h4>
+          <h4>{plant.name}</h4>
         </Row>
         <Row>
-        Water: &nbsp;
+          <Col>
+            {
+              plant.photo ?
+                <Image
+                  src={plant.photo}
+                  width={78}
+                  height={78}
+                  thumbnail
+                />
+                : null
+              }
+          </Col>
+        </Row>
+        <Row>
+          Water: &nbsp;
           <p>{plant.water}</p>
         </Row>
         <Row>
-        Sun: &nbsp;
+          Sun: &nbsp;
           <p>{plant.sun}</p>
         </Row>
       </Col>

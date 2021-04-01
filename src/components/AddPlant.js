@@ -19,7 +19,7 @@ function AddPlant() {
     <Container>
       <Row>
         <Col style={style}>
-          <Button variant="primary" onClick={() => setModalShow(true)}>
+          <Button variant="primary" className="float-right" onClick={() => setModalShow(true)}>
             Add
       </Button>
           <AddModal
