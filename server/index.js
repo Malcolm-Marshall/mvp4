@@ -32,6 +32,27 @@ app.post('/plants', (req, res) => {
   })
 })
 
+app.delete('/plants/:id', (req, res) => {
+  db.deletePlant(req.params.id, (err, results) => {
+    if (err) {
+      console.log(err)
+      res.send('Could not post delete')
+    } else {
+      res.send('Deleted')
+    }
+  })
+})
+
+app.put('/plants/:id', (req, res) => {
+  db.editPlant(req.body, req.params.id, (err, results) => {
+    if (err) {
+      res.send('Could not edit')
+    } else {
+      res.send('Edited')
+    }
+  })
+})
+
 /*app.put(`/api/cows/:id`, (req, res) => {
   db.editCow(req.params.id, req.body, (err, results) => {
     if (err) {

@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <Container>
+    <Container style={{backgroundColor: '#d5f7c6'}}>
       <Row>
         <Col>
           <h1>Most Valuable Plants</h1>
@@ -35,7 +35,7 @@ function App() {
       </Row>
       <Row>
         <Col>
-          <MyPlants plants={plants}/>
+          <MyPlants plants={plants} getAll={getAll}/>
         </Col>
       </Row>
     </Container>

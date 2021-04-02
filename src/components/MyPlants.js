@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Plant from './Plant';
 
 
-function MyPlants({ plants }) {
+function MyPlants({ plants, getAll }) {
 
   return (
     <Container>
@@ -17,8 +17,7 @@ function MyPlants({ plants }) {
         <Col>
           {
             plants.map((plant, i) => {
-              console.log(plant)
-              return <Plant plant={plant} key={i}/>
+              return <Plant plant={plant} key={i} getAll={getAll}/>
             })
           }
         </Col>

@@ -9,5 +9,6 @@ CREATE TABLE plants (
   name VARCHAR(225),
   water VARCHAR(225),
   sun VARCHAR(225),
+  waterLog VARCHAR(225),
   photo VARCHAR(225)
 );

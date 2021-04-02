@@ -17,9 +17,9 @@ function AddModal(props) {
   const addPhoto = (e) => {
     e.preventDefault();
     if (imgContainer.length) {
-      const photosArray = photos;
-      photosArray.push(imgContainer);
-      setPhotos(photosArray);
+      // const photosArray = photos;
+      // photosArray.push(imgContainer);
+      setPhotos(imgContainer);
       setPhotosToggle(true);
       setImgContainer('');
     } else {
@@ -35,8 +35,9 @@ function AddModal(props) {
       photo: photos
     }
     axios.post('http://localhost:3000/plants', obj)
-    .then(() => props.getAll())
-    .catch((err) => console.log(err))
+      .then(() => props.getAll())
+      .then(() => props.onHide())
+      .catch((err) => console.log(err))
   }
 
   // useEffect(() => {
@@ -106,14 +107,14 @@ function AddModal(props) {
                   <Form.Label>Upload Photo</Form.Label>
                   <Form.Control type="" value={imgContainer} placeholder="Paste image url here" onChange={(e) => setImgContainer(e.target.value)} />
 
-                  {photos.length ? photos.map((photo, i) => <img className="upload-img" key={i} alt="" src={photo} onClick={(e) => removePhoto(e, photo)} />) : null}
+                  {photos.length ? <img className="upload-img" alt="" src={photos} /> : null}
                   {(photos.length < 5) ? <Button className="upload-btn" onClick={(e) => addPhoto(e)}>Upload</Button> : null}
                   <style jsx>
                     {`
-                img {
-                  height: 75px;
-                }
-            `}
+                      img {
+                     height: 75px;
+                     }
+                    `}
                   </style>
                 </Form.Group>
               </Col>

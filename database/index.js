@@ -34,7 +34,24 @@ const addPlant = (data, cb) => {
   })
 }
 
+const deletePlant = (id, cb) => {
+  console.log(id)
+  connection.query('DELETE FROM plants WHERE id=?', [id], (err, result) => {
+    if (err) cb(err);
+    cb(null, result);
+  })
+}
+
+const editPlant = (name, id, cb) => {
+  connection.query('UPDATE cows SET SET name=? WHERE id=?', [name, id], (err, result) => {
+    if (err) cb(err);
+    cb(null, result);
+  })
+}
+
 module.exports = {
   getAll,
-  addPlant
+  addPlant,
+  deletePlant,
+  editPlant
 };
